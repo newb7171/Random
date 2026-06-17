@@ -1,4 +1,4 @@
-name: Wine wcp 
+name: Proton wcp 
 
 on:
   workflow_dispatch:
@@ -103,22 +103,22 @@ jobs:
           find . -type f \( -name "*.c" -o -name "*.h" -o -name "*.in" -o -name "*.spec" \) \
             -exec grep -l "/tmp" {} \; \
             | \
-            xargs -r sed -i 's|/tmp/|/data/data/com.winlator/files/rootfs/usr/tmp/|g'
+            xargs -r sed -i 's|/tmp/|/data/data/com.winlator/files/imagefs/usr/tmp/|g'
 
           find server -type f \( -name "*.c" -o -name "*.h" \) \
-            -exec sed -i 's|"/tmp"|"/data/data/com.winlator/files/rootfs/usr/tmp"|g' {} +
+            -exec sed -i 's|"/tmp"|"/data/data/com.winlator/files/imagefs/usr/tmp"|g' {} +
 
           find . \
             -name "file.c" \
-            -exec sed -i 's|"/tmp"|"/data/data/com.winlator/files/rootfs/usr/tmp"|g' {} +
+            -exec sed -i 's|"/tmp"|"/data/data/com.winlator/files/imagefs/usr/tmp"|g' {} +
 
           find . \
             -name "loader.c" \
-            -exec sed -i 's|"/tmp"|"/data/data/com.winlator/files/rootfs/usr/tmp"|g' {} +
+            -exec sed -i 's|"/tmp"|"/data/data/com.winlator/files/imagefs/usr/tmp"|g' {} +
 
           find . \
             -name "server.c" \
-            -exec sed -i 's|"/tmp"|"/data/data/com.winlator/files/rootfs/usr/tmp"|g' {} +
+            -exec sed -i 's|"/tmp"|"/data/data/com.winlator/files/imagefs/usr/tmp"|g' {} +
 
       - name: Generate configure script
         working-directory: /tmp/build_wine/wine
